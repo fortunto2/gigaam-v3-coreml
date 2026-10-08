@@ -17,6 +17,9 @@ and rebuild the package before `MLModel.compileModel`:
 <Name>.weight.bin         -> <Name>.mlpackage/Data/com.apple.CoreML/weights/weight.bin
 ```
 
+The encoder's `weight.bin` (222 MB) is published as five 50 MB pieces,
+`GigaAMv3Encoder.weight.bin.part0` … `part4`: `cat part0 part1 part2 part3 part4 > weight.bin`.
+
 I/O contract, mel front-end (16 kHz, 64 HTK mels, n_fft = win = 320, hop = 160, center = false,
 log(clamp(1e-9, 1e9))), blank id 1024 and the greedy loop: see the smkrv model card.
 Used by [Voxlog](https://github.com/fortunto2/voxlog) (`ios/Voxlog/Audio/GigaAMEngine.swift`).
